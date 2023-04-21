@@ -1,11 +1,10 @@
-# resolvable-web
+# Resolvable Web
 Resolvable Rating &amp; Comment
 
 ## Installation
 Run Terminal, install node modules
 ```sh
 npm i
-npm run dev
 ```
 
 Run the solution
