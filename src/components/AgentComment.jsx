@@ -5,7 +5,7 @@ import classes from "./AgentComment.module.scss";
 const AgentComment = (props) => {
   const [comment, setComment] = useState("");
   const [txtValid, settxtValid] = useState(false);
-  const { searchAgent } = useContext(Context);
+  const { agentLists } = useContext(Context);
 
   const submitCTA = (e) => {
     e.preventDefault();
@@ -13,7 +13,7 @@ const AgentComment = (props) => {
       settxtValid(true);
     } else {
       settxtValid(false);
-      //Send to Parent
+      //Send to Parent Component
       props.commentDone(comment);
       props.submitDone(true);
     }
@@ -26,13 +26,12 @@ const AgentComment = (props) => {
         <textarea
           id="agentComment"
           name="comment"
-          placeholder={`Would you like to leave a note for ${searchAgent[0].firstName}?`}
+          placeholder={`Would you like to leave a note for ${agentLists.first_name}?`}
           value={comment}
           onChange={(e) => {
             setComment(e.target.value);
           }}
-        ></textarea>
-
+        />
         {txtValid && (
           <p className={classes.errorMsg}>Please insert a comment !</p>
         )}

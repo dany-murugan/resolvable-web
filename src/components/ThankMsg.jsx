@@ -4,7 +4,7 @@ const ThankMsg = (props) => {
   return (
     <section>
       <h2 className="intro-section-title-thx">
-        Thank you from {props.searchAgent[0].firstName}!
+        Thank you from {props.agentLists.first_name}!
       </h2>
     </section>
   );
