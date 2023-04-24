@@ -13,8 +13,10 @@ npm run dev
 ```
 ## Tech
 - Vite - Runtime (https://vitejs.dev/)
-- Material UI - (https://mui.com/)
 - Dummy API - (https://dummyapi.io/explorer)
 
 ## Demo
-- Netlify - (https://teal-croquembouche-f6c0d0.netlify.app/)
+- Netlify - (https://teal-croquembouche-f6c0d0.netlify.app)
+
+## Demo with Material UI
+- Netlify - (https://feature-ui-material--teal-croquembouche-f6c0d0.netlify.app)
