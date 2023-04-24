@@ -15,7 +15,7 @@ function App() {
     // const request = axios.get(url, {headers});
 
     // Swagger Editor
-    const url = `http://134.122.98.10/api/invite/yPJFdmhW3nThQKhh`;
+    const url = `https://134.122.98.10/api/invite/yPJFdmhW3nThQKhh`;
     const request = axios.get(url);
     const response = await request;
     console.log('response', response.data);
