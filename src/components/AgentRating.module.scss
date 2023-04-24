@@ -1,0 +1,43 @@
+$radio-color: #3c3275;
+$radio-txt-color: #fff;
+
+.rating-section {
+  max-width: 340px;
+  width: 100%;
+  .form-rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 23px;
+    @media (min-width: 801px) {
+      gap: 29px;
+    }
+
+    input {
+      display: none;
+
+      &[type="radio"]:checked + label {
+        color: $radio-txt-color;
+        background-color: $radio-color;
+      }
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid $radio-color;
+      border-radius: 56px;
+      cursor: pointer;
+
+      &:hover {
+        color: $radio-txt-color;
+        background-color: $radio-color;
+      }
+    }
+  }
+}

@@ -1,12 +1,10 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import Context from "../Context";
-
-import {Avatar, Card, CardHeader, CardContent, Typography, Divider  } from "@mui/material/";
-
 import AgentRating from "./AgentRating";
 import AgentComment from "./AgentComment";
 import ThankMsg from "./ThankMsg";
+import classes from "./AgentList.module.scss";
 
 const AgentList = () => {
   const { agentLists } = useContext(Context);
@@ -21,7 +19,9 @@ const AgentList = () => {
     (agentList) => agentList.firstName === "Rudi"
   );
 
-  {agentLists && console.log("agentLists", agentLists);}
+  {
+    agentLists && console.log("agentLists", agentLists);
+  }
 
   // Submit Rating & Comment
   const handleSubmit = () => {
@@ -53,43 +53,36 @@ const AgentList = () => {
   }
 
   return (
-    <div>
+    <div className={classes.profileContainer}>
       {searchAgent.map((agent) => {
         const titleSurname =
           agent.title.toUpperCase() + " " + agent.lastName.toUpperCase();
         return (
           <div key={agent.id}>
-            {!rnrDone && (
-              <Card sx={{ maxWidth: 345 }}>
-                <CardHeader
-                  avatar={
-                    <Avatar
-                      src={agent.picture}
-                      sx={{ width: 56, height: 56 }}
-                      alt={agent.firstName}
-                    />
-                  }
-                  title={titleSurname}
-                  subheader={agent.firstName}
+            <section className={classes.profileSection}>
+              <div className={classes.profileAvatar}>
+                <img
+                  src="https://static.intercomassets.com/avatars/2738428/square_128/Screen_Shot_2018-11-21_at_16.36.09-1542818205.png"
+                  alt="avatar-x2-min"
                 />
-                 <Divider />
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary" style={{textAlign: 'left'}} mb={1}>Rating:</Typography>
-                  <Context.Provider value={{ rateValue }}>
-                    <AgentRating
-                      ratingChange={(rateValue) => setRateValue(rateValue)}
-                    />
-                    {rateValue && (
-                      <AgentComment
-                        commentDone={(commentValue) =>
-                          setCommentValue(commentValue)
-                        }
-                        submitDone={(ctaValue) => setrnrDone(ctaValue)}
-                      />
-                    )}
-                  </Context.Provider>
-                </CardContent>
-              </Card>
+              </div>
+              <div className={classes.profileUsername}>Alice Jones</div>
+            </section>
+            <hr />
+
+            {!rnrDone && (
+              <Context.Provider value={{ rateValue }}>
+                {!rateValue && (
+                  <AgentRating ratingChange={(rateValue) => setRateValue(rateValue)} />
+                )}
+
+                {rateValue && (
+                  <AgentComment 
+                    commentDone={(commentValue) => setCommentValue(commentValue)}
+                    submitDone={(ctaValue) => setrnrDone(ctaValue)}
+                  />
+                )}
+              </Context.Provider>
             )}
 
             {rnrDone && <ThankMsg />}

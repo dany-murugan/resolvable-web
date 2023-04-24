@@ -1,54 +1,71 @@
-import React from "react";
-import { Rating, Box } from "@mui/material/";
-import StarIcon from "@mui/icons-material/Star";
+import React, { useState } from "react";
+import classes from "./AgentRating.module.scss";
 
 const AgentRating = (props) => {
-  const labels = {
-    0.5: "0.5 Star",
-    1: "1 Star",
-    1.5: "1.5 Stars",
-    2: "2 Stars",
-    2.5: "2.5 Stars",
-    3: "3 Stars",
-    3.5: "3.5 Stars",
-    4: "4 Stars",
-    4.5: "4.5 Stars",
-    5: "5 Stars",
+  // For predefine value
+  // const [value, setValue] = useState(0);
+
+  const handleAddFormChange = (e) => {
+    const fieldValue = e.target.value;
+    // setValue(fieldValue);
+    props.ratingChange(fieldValue);
   };
 
-  function getLabelText(value) {
-    return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
-  }
-
-  const [value, setValue] = React.useState(0);
-  const [hover, setHover] = React.useState(-1);
-
   return (
-    <Box
-      sx={{
-        width: 200,
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <Rating
-        name="hover-feedback"
-        value={value}
-        precision={0.5}
-        getLabelText={getLabelText}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-          props.ratingChange(newValue);
-        }}
-        onChangeActive={(event, newHover) => {
-          setHover(newHover);
-        }}
-        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-      />
-      {value !== null && (
-        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
-      )}
-    </Box>
+    <section className={classes.ratingSection}>
+      <h2 className="intro-section-title">How would you rate their service?</h2>
+      <form className={classes.formRating}>
+        <input
+          type="radio"
+          name="rating"
+          id="rating1"
+          value="1"
+          required
+          onChange={handleAddFormChange}
+        />
+        <label htmlFor="rating1">1</label>
+
+        <input
+          type="radio"
+          name="rating"
+          id="rating2"
+          value="2"
+          required
+          onChange={handleAddFormChange}
+        />
+        <label htmlFor="rating2">2</label>
+
+        <input
+          type="radio"
+          name="rating"
+          id="rating3"
+          value="3"
+          required
+          onChange={handleAddFormChange}
+        />
+        <label htmlFor="rating3">3</label>
+
+        <input
+          type="radio"
+          name="rating"
+          id="rating4"
+          value="4"
+          required
+          onChange={handleAddFormChange}
+        />
+        <label htmlFor="rating4">4</label>
+
+        <input
+          type="radio"
+          name="rating"
+          id="rating5"
+          value="5"
+          required
+          onChange={handleAddFormChange}
+        />
+        <label htmlFor="rating5">5</label>
+      </form>
+    </section>
   );
 };
 
