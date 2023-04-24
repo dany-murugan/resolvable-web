@@ -19,9 +19,7 @@ const AgentList = () => {
     (agentList) => agentList.firstName === "Rudi"
   );
 
-  {
-    agentLists && console.log("agentLists", agentLists);
-  }
+  {agentLists && console.log("agentLists", agentLists);}
 
   // Submit Rating & Comment
   const handleSubmit = () => {
@@ -55,8 +53,7 @@ const AgentList = () => {
   return (
     <div className={classes.profileContainer}>
       {searchAgent.map((agent) => {
-        const titleSurname =
-          agent.title.toUpperCase() + " " + agent.lastName.toUpperCase();
+        const titleSurname = agent.title.toUpperCase() + " " + agent.lastName.toUpperCase();
         return (
           <div key={agent.id}>
             <section className={classes.profileSection}>
