@@ -1,10 +1,11 @@
 import React from "react";
-import { Card, CardContent, Typography } from "@mui/material/";
 
-const ThankMsg = () => {
+const ThankMsg = (props) => {
   return (
     <section>
-      <h2 className="intro-section-title-thx">Thank you from Alice!</h2>
+      <h2 className="intro-section-title-thx">
+        Thank you from {props.searchAgent[0].firstName}!
+      </h2>
     </section>
   );
 };

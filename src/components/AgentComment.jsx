@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "../Context";
 import classes from "./AgentComment.module.scss";
 
 const AgentComment = (props) => {
   const [comment, setComment] = useState("");
   const [txtValid, settxtValid] = useState(false);
+  const { searchAgent } = useContext(Context);
 
   const submitCTA = (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ const AgentComment = (props) => {
         <textarea
           id="agentComment"
           name="comment"
-          placeholder="Would you like to leave a note for Alice?"
+          placeholder={`Would you like to leave a note for ${searchAgent[0].firstName}?`}
           value={comment}
           onChange={(e) => {
             setComment(e.target.value);

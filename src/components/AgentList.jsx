@@ -59,16 +59,16 @@ const AgentList = () => {
             <section className={classes.profileSection}>
               <div className={classes.profileAvatar}>
                 <img
-                  src="https://static.intercomassets.com/avatars/2738428/square_128/Screen_Shot_2018-11-21_at_16.36.09-1542818205.png"
-                  alt="avatar-x2-min"
+                  src={agent.picture}
+                  alt={agent.firstName}
                 />
               </div>
-              <div className={classes.profileUsername}>Alice Jones</div>
+              <div className={classes.profileUsername}>{agent.firstName} {agent.lastName}</div>
             </section>
             <hr />
 
             {!rnrDone && (
-              <Context.Provider value={{ rateValue }}>
+              <Context.Provider value={{ rateValue, searchAgent }}>
                 {!rateValue && (
                   <AgentRating ratingChange={(rateValue) => setRateValue(rateValue)} />
                 )}
@@ -82,7 +82,7 @@ const AgentList = () => {
               </Context.Provider>
             )}
 
-            {rnrDone && <ThankMsg />}
+            {rnrDone && <ThankMsg searchAgent={searchAgent} />}
           </div>
         );
       })}
