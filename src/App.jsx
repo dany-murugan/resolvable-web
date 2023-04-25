@@ -16,8 +16,8 @@ function App() {
     // const request = axios.get(url, {headers});
 
     const url = `http://134.122.98.10/api/invite/create`;
-    const headers = { 'api_key': '643fc8bbe214cb4bfbbf8c76' };
-    const request = axios.get(url);
+    const headers = { 'Origin': 'http://127.0.0.1:5173' };
+    const request = axios.get(url, headers);
     const response = await request;
     setagentID(response.data.invite.code);
     setAgentLists(response.data.invite.agent);

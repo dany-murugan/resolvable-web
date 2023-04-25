@@ -39,31 +39,98 @@ const AgentList = () => {
     //   console.log("url", url);
     // };
 
-    const API_URL = `http://134.122.98.10/api/invite/${agentID}/rate`;
+    // const API_URL = `http://134.122.98.10/api/invite/FhuDa11DTGiq9cvX/rate`;
 
-    const postData = async (data) => {
-      try {
-        const config = {
-          headers: {
-            'Access-Control-Allow-Origin': '*'
-          }
-        };
-        const response = await axios.post(`${API_URL}`, data, config);
-        if (response.status === 200) {
-          console.log(response.data); // handle successful response
-        } else {
-          console.error('Request failed with status code', response.status);
-        }
-      } catch (error) {
-        console.error(error); // handle error
-      }
-    };
+    // ******** axios api *****************//
+    // const postData = async (data) => {
+    //   try {
+    //     const config = {
+    //       headers: {
+    //         'Access-Control-Allow-Origin': '*'
+    //       }
+    //     };
+    //     const headers = { 'Access-Control-Allow-Origin': '*' }
+    //     const response = await axios.post(`${API_URL}`, data, headers);
+    //     console.log(response.data); // handle successful response
+    //   } catch (error) {
+    //     console.error(error); // handle error
+    //   }
+    // };
+    // postData({ name: 'John', email: 'john@example.com' });
+    // postData({ "score": 1 });
+    // ******** axios api *****************//
+
+
+  // ******** fetch api *****************//
+    // const data = {
+    //   score: rateValue,
+    // };
     
-    postData({ score: '2'});
+    // fetch('http://134.122.98.10/api/invite/FhuDa11DTGiq9cvX/rate', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Access-Control-Allow-Origin': '*'
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+    // .then(response => response.json())
+    // .then(data => console.log(data))
+    // .catch(error => console.error(error));
+  // ******** fetch api *****************//
+  
+  
+  // ******** axios put api *****************//
+  // const data = {
+  //   "score": rateValue
+  // };
+  
+  // axios.post('http://134.122.98.10/api/invite/nUDY6XeDzkIWZx43/rate', data, {
+  //   headers: {
+  //     "accept": "application/json, text/plain, */*",
+  //     "access-control-allow-origin": "*",
+  //     "content-type": "application/json"
+  //   }
+  // })
+  //   .then((response) => {
+  //     // Handle success
+  //     console.log(response.data);
+  //   })
+  //   .catch((error) => {
+  //     // Handle error
+  //     console.error(error);
+  //   });
+  // ******** axios put api *****************//
 
 
+  // ******** axios post json api *****************//
+  const API_URL = `http://134.122.98.10/api/invite/${agentID}/rate`;
 
-    console.log("newUpdateAgent", ratingScore);
+  const postData = async (data) => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      };
+      const response = await axios.post(`${API_URL}`, JSON.stringify(data), config);
+      if (response.status === 200) {
+        console.log(response.data); // handle successful response
+      } else {
+        console.error('Request failed with status code', response.status);
+      }
+    } catch (error) {
+      console.error(error); // handle error
+    }
+  };
+
+  // postData({ name: 'John', email: 'john@example.com' });
+  postData({ score: rateValue });
+
+  // ******** axios post json api *****************//
+
+    // console.log("newUpdateAgent", ratingScore);
 
     // Dummy api
     // api_post();
