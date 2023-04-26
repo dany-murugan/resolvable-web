@@ -10,6 +10,7 @@ export default defineConfig({
             generateScopedName: "[name]__[local]_[hash:base64:3]",
         }
     },
+    base: "/resolvable-web/"
     // server: { 
     //   proxy: { 
     //     "/api": { 
