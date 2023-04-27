@@ -9,5 +9,6 @@ export default defineConfig({
       localsConvention: 'camelCase',
       generateScopedName: "[name]__[local]_[hash:base64:3]",
     }
-  }
+  },
+  base: '/resolvable-web/',
 })
