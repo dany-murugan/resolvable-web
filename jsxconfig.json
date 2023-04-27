@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "/resolvable-web/",
+    "baseUrl": "/src/",
     "checkJs": true,
     "jsx": "react"
   }
